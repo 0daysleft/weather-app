@@ -12,6 +12,7 @@ html{
 body{
      background: #222;
      max-width: 99vw;
+     color: #fff;
 }
 
 .weather-box{
