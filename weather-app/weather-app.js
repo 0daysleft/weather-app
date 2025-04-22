@@ -89,8 +89,6 @@ async function nowWeather() {
 
 let times = []
 
-times.push(time);
-console.log(times)
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
      
      let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
