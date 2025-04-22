@@ -15,7 +15,17 @@ body{
 }
 
 .weather-box{
+     max-width: 90vw;
+     margin: 0 auto;
      display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+}
+
+.weather-status{
+     display: flex;
+     flex-direction: column;
+
 }
 
 .weather-details{
@@ -25,14 +35,18 @@ body{
 
 .search-box{
      display: flex;
+     justify-content: space-evenly;
 }
 
 .future-weather{
      display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
 }
 
 .atmospheric-conditions{
      display: flex;
+     justify-content: space-evenly;
 }
 
 
