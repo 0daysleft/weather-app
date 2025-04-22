@@ -88,6 +88,7 @@ async function nowWeather() {
 
 
 let times = []
+let r;
 
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
      
@@ -96,21 +97,14 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilli
      
      async function nowWeather2() {
      let a = await fetch(api2)
-     let r = await a.json();
+     r = await a.json();
      todayWeatherDate.textContent = new Date(times[0]).toDateString();
      
       todayWeatherName.textContent = r.weather[0].main;
       todayWeatherCity.textContent = r.name;
       todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
 
-     document.querySelector('.future-weather').innerHTML = 
-                    `
-                    <div class="next-day">
-                         <h2 class="next-day-date"></h2>
-                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
-                         <h3  class="next-weather-temperature" > 11°C - 21°C</h3>
-                    </div>
-                    `
+     
 
 
       //console.log(times)
@@ -134,6 +128,19 @@ nowWeather2();
 
 //console.log(i);
 //console.log(new Date(i));
+}
+
+function displayFutureWeather(){
+     for(let i = 1; i <= times.length; i++){
+          document.querySelector('.future-weather').innerHTML += 
+                    `
+                    <div class="next-day">
+                         <h2 class="next-day-date"></h2>
+                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+                         <h3  class="next-weather-temperature" > 11°C - 21°C</h3>
+                    </div>
+                    `
+     }
 }
 
 
