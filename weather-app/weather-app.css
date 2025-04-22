@@ -5,10 +5,84 @@
           box-sizing: border-box;
 }
 
-body{
-          background: #222;
+html{
+     max-width: 99vw;
 }
 
+body{
+     background: #222;
+     max-width: 99vw;
+}
+
+.weather-box{
+     display: flex;
+}
+
+.weather-details{
+     display: flex;
+     flex-direction: column;
+}
+
+.search-box{
+     display: flex;
+}
+
+.future-weather{
+     display: flex;
+}
+
+.atmospheric-conditions{
+     display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 .card{
           width: 90%;
           max-width: 470px;
