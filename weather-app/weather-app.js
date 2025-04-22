@@ -50,7 +50,7 @@ let time = new Date().getTime().toString();
 let dayMilliseconds =  86400000;
 
 //console.log(Number(time) + (dayMilliseconds));
-let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&appid=${apiKey}`
+let api = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&appid=${apiKey}`
 
 //let api = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${time}&appid=${apiKey}`
 
@@ -89,22 +89,27 @@ async function nowWeather() {
 
 let times = []
 let timesLen;
+let nowWeather2;
+let  a;
 let r;
+//var api2;
 
-for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 1)); i += dayMilliseconds){
+
+for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
      
-     let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+     api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
      times.push(i);
+
      
-     async function nowWeather2() {
-     let a = await fetch(api2)
+    nowWeather2 = async () => {
+     a = await fetch(api2)
      r = await a.json();
-     console.log(r)
+     
      todayWeatherDate.textContent = new Date(times[0]).toDateString();
      
-      todayWeatherName.textContent = r.weather[0].main;
-      todayWeatherCity.textContent = r.name;
-      todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
+     todayWeatherName.textContent = r.weather[0].main;
+     todayWeatherCity.textContent = r.name;
+     todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
 
      timesLen = times.length -1 
      //displayFutureWeather()
@@ -117,6 +122,7 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 1)); i += dayMilli
                          <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
                     </div>
                     `
+                  console.log(r)  
      
 
       //console.log(times)
@@ -131,17 +137,20 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 1)); i += dayMilli
 
      //console.log(r)
 
-     
 }
 
+
+//console.log(new Date(times[timesLen]).toDateString())   
 //nowWeather2();
 
-nowWeather2();
+
 
 //console.log(i);
 //console.log(new Date(i));
+nowWeather2();
 }
-
+console.log("Response Out: ",r)
+//console.log(new Date(times[2]).toDateString())
 // function displayFutureWeather(){
 //      for(let i = 1; i <= times.length - 1; i++){
 //           document.querySelector('.future-weather').innerHTML += 
@@ -162,10 +171,10 @@ document.querySelectorAll('input[type="radio"]').forEach (
      (element) => {
           element.addEventListener('click', () => {
                if(element.checked){
-               console.log(element.id)
+               //console.log(element.id)
                }
                else{
-                    console.log(element.id, " Not")
+                   // console.log(element.id, " Not")
                }
           })
      }
