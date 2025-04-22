@@ -88,9 +88,10 @@ async function nowWeather() {
 
 
 let times = []
+let timesLen;
 let r;
 
-for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
+for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 1)); i += dayMilliseconds){
      
      let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
      times.push(i);
@@ -98,14 +99,25 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilli
      async function nowWeather2() {
      let a = await fetch(api2)
      r = await a.json();
+     console.log(r)
      todayWeatherDate.textContent = new Date(times[0]).toDateString();
      
       todayWeatherName.textContent = r.weather[0].main;
       todayWeatherCity.textContent = r.name;
       todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
 
+     timesLen = times.length -1 
+     //displayFutureWeather()
      
-
+          document.querySelector('.future-weather').innerHTML += 
+                    `
+                    <div class="next-day">
+                         <h2 class="next-day-date">${new Date(times[timesLen]).toDateString()}</h2>
+                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+                         <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
+                    </div>
+                    `
+     
 
       //console.log(times)
      // let weatherDesc = r.weather[0].description;
@@ -130,18 +142,18 @@ nowWeather2();
 //console.log(new Date(i));
 }
 
-function displayFutureWeather(){
-     for(let i = 1; i <= times.length; i++){
-          document.querySelector('.future-weather').innerHTML += 
-                    `
-                    <div class="next-day">
-                         <h2 class="next-day-date"></h2>
-                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
-                         <h3  class="next-weather-temperature" > 11°C - 21°C</h3>
-                    </div>
-                    `
-     }
-}
+// function displayFutureWeather(){
+//      for(let i = 1; i <= times.length - 1; i++){
+//           document.querySelector('.future-weather').innerHTML += 
+//                     `
+//                     <div class="next-day">
+//                          <h2 class="next-day-date">${new Date(times[i]).toDateString()}</h2>
+//                          <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+//                          <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
+//                     </div>
+//                     `
+//      }
+// }
 
 
 //nowWeather2();
