@@ -84,7 +84,7 @@ body{
      display: flex;
 }
 
-.label, label{
+/* .label, label{
      width: 60px;
      height: 40px !important;
      background-color: #aaa;
@@ -103,6 +103,37 @@ input[type='radio']{
      visibility: hidden;
      cursor: pointer;
 }
+input[type='radio']:checked() label{
+     background-color: red;
+     color: red;
+} */
+
+.label {
+    width: 60px;
+    height: 40px;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Hide the actual radio button */
+input[type='radio'] {
+    display: none; /* Hide the actual radio button */
+    cursor: pointer;
+}
+
+/* Style the label when the radio button is checked */
+input[type='radio']:checked + .label {
+    background-color: red !important;
+    color: blue !important;
+}
+
 
 
 .future-weather{
