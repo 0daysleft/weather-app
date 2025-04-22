@@ -92,16 +92,27 @@ let times = []
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
      
      let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+     times.push(i);
      
      async function nowWeather2() {
      let a = await fetch(api2)
      let r = await a.json();
-          //console.log(typeof new Date(i).toDateString());
+     todayWeatherDate.textContent = new Date(times[0]).toDateString();
      
-
       todayWeatherName.textContent = r.weather[0].main;
       todayWeatherCity.textContent = r.name;
-      todayWeatherTemperature.innerHTML = r.main.temp+"°C"
+      todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
+
+     document.querySelector('.future-weather').innerHTML = 
+                    `
+                    <div class="next-day">
+                         <h2 class="next-day-date"></h2>
+                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+                         <h3  class="next-weather-temperature" > 11°C - 21°C</h3>
+                    </div>
+                    `
+
+
       //console.log(times)
      // let weatherDesc = r.weather[0].description;
      // let windTemp = r.weather[0].main.temp
@@ -124,7 +135,7 @@ nowWeather2();
 //console.log(i);
 //console.log(new Date(i));
 }
-//console.log(times)
+
 
 //nowWeather2();
 //console.log(document.querySelectorAll('input[type="radio"]'));
