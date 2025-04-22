@@ -59,53 +59,60 @@ async function nowWeather() {
      console.log(r)
      //console.log(new Date(time - r.dt).toLocaleTimeString())
 
-     let weather = r.weather[0].main;
-     let weatherDesc = r.weather[0].description;
-     let windSpeed =  r.wind.speed
-     let windDeg = r.wind.deg;
-     let windgust = r.wind.gust;
-     let country = r.sys.country;
-     let countrySunrise = new Date(r.sys.sunrise).toUTCString();
-     let countrySunset = new Date(r.sys.sunset).toUTCString();
+     // let weather = r.weather[0].main;
+     // let weatherDesc = r.weather[0].description;
+     // let windSpeed =  r.wind.speed
+     // let windDeg = r.wind.deg;
+     // let windgust = r.wind.gust;
+     // let country = r.sys.country;
+     // let countrySunrise = new Date(r.sys.sunrise).toUTCString();
+     // let countrySunset = new Date(r.sys.sunset).toUTCString();
 
-     console.log(
-          "Weather: ", weather,
-          "\nWeatherDesc: ", weatherDesc,
-          "\nWindSpeed: ", windSpeed,
-          "\nWindDeg: ", windDeg,
-          "\nWindGust: ", windgust,
-          "\nCountry: ", country, 
-          "\nCountrySunrise: ", countrySunrise,
-          "\nCountrySunSet: ", countrySunset
-     )
+     // console.log(
+     //      "Weather: ", weather,
+     //      "\nWeatherDesc: ", weatherDesc,
+     //      "\nWindSpeed: ", windSpeed,
+     //      "\nWindDeg: ", windDeg,
+     //      "\nWindGust: ", windgust,
+     //      "\nCountry: ", country, 
+     //      "\nCountrySunrise: ", countrySunrise,
+     //      "\nCountrySunSet: ", countrySunset
+     // )
 }
 
-//nowWeather();
+nowWeather();
 
 //console.log(typeof Date.now())
 
-let b = Date.now() + dayMilliseconds;
-console.log(new Date(b).toLocaleTimeString());
 
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
-     let times = new Date(i);
-     todayWeatherTemperature.innerHTML += times + "</br>";
+     let times = new Date(i).toLocaleDateString();
+     let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+     async function nowWeather2() {
+     let a = await fetch(api2)
+     let r = await a.json();
+
+     let weather = r.weather[0].main;
+     let weatherDesc = r.weather[0].description;
+     let windTemp = r.weather[0].main.temp
+
+     console.log(
+          `
+          \nThere will be ${weather} at ${times}, weather description ${windTemp}
+          `
+     )
+
+     
+}
+
+//nowWeather2();
+
+     
      //console.log(i);
      //console.log(new Date(i));
 }
 
 
-let api2 = `https://api.openweathermap.org/data/2.5/weather?q=kutus&dt=${time}&appid=${apiKey}`
-async function nowWeather2() {
-     let a = await fetch(api2)
-     let r = await a.json();
-
-     //console.log(new Date(r.dt).toDateString());
-     //console.log(r)
-     //console.log(new Date(time - r.dt).toLocaleTimeString())
-
-
-}
 
 //nowWeather2();
 
