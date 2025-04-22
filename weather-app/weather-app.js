@@ -3,9 +3,55 @@ const apiKey = "d9c1a4603e9c90bd3fb43db001f68315";
 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-const searchBox = document.querySelector(".search input");
-const searchBtn= document.querySelector(".search button");
+//Selecting the elements searched
+
 const weatherIcon= document.querySelector(".weather-icon");
+const todayWeatherImage = document.querySelector('.weather-image img');
+const todayWeatherTemperature = document.querySelector(".weather-temperature");
+const todayWeatherName = document.querySelector(".weather-name");
+const todayWeatherDate = document.querySelector(".weather-date");
+const todayWeatherCity = document.querySelector(".weather-city");
+
+//Buttons Elements
+
+const searchInput = document.querySelector("#search-value");
+const searchBtn= document.querySelector("#search-btn");
+
+const changeToCelcious = document.querySelector("#celcious");
+const changeToFahrenheit = document.querySelector("#fahrenheit");
+
+//Selecting Future Elements
+
+//Next Day
+const nextWeatherDate = document.querySelector(".next-day .next-day-date");
+const nextDayWeatherImage = document.querySelector(".next-day .next-day-weather-img img");
+const nextDayWeatherTemperature = document.querySelector(".next-day .next-weather-temperature");
+
+//Second Day After Next Day
+
+const secondWeatherDate = document.querySelector(".second-day .second-day-date");
+const secondDayWeatherImage = document.querySelector(".second-day .second-day-weather-img img");
+const secondWeatherTemperature = document.querySelector(".second-day .second-weather-temperature");
+
+//Third Day From the Next Day
+
+const thirdWeatherDate = document.querySelector(".third-day .third-day-date");
+const thirdDayWeatherImage = document.querySelector(".third-day .third-day-weather-img img");
+const thirdDayWeatherTemperature = document.querySelector(".third-day .third-weather-temperature");
+
+//Wind And Humidity Information
+
+const windSpeed = document.querySelector('.wind-speed')
+const humidityPercentage = document.querySelector('.humidity-percentage')
+
+
+
+
+
+
+
+
+
 
 async function checkWeather(city){
           const response = await fetch(apiUrl + city + `
