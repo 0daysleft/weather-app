@@ -87,15 +87,24 @@ async function nowWeather() {
 //console.log(typeof Date.now())
 
 
-for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
-     let times = new Date(i).toLocaleDateString();
-     let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+let times = []
 
+times.push(time);
+console.log(times)
+for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
+     
+     let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+     
      async function nowWeather2() {
      let a = await fetch(api2)
      let r = await a.json();
+          //console.log(typeof new Date(i).toDateString());
+     
 
-     // todayWeatherName.textContent = r.weather[0].main;
+      todayWeatherName.textContent = r.weather[0].main;
+      todayWeatherCity.textContent = r.name;
+      todayWeatherTemperature.innerHTML = r.main.temp+"°C"
+      //console.log(times)
      // let weatherDesc = r.weather[0].description;
      // let windTemp = r.weather[0].main.temp
  
@@ -105,7 +114,7 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilli
      //      `
      // )
 
-     console.log(r)
+     //console.log(r)
 
      
 }
@@ -114,10 +123,10 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilli
 
 nowWeather2();
 
-     
-     //console.log(i);
-     //console.log(new Date(i));
+//console.log(i);
+//console.log(new Date(i));
 }
+//console.log(times)
 
 //nowWeather2();
 //console.log(document.querySelectorAll('input[type="radio"]'));
