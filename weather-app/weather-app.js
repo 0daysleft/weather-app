@@ -43,6 +43,7 @@ const thirdDayWeatherTemperature = document.querySelector(".third-day .third-wea
 
 const windSpeed = document.querySelector('.wind-speed')
 const humidityPercentage = document.querySelector('.humidity-percentage')
+const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 
 //https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={time}&appid={API key}
 //  
@@ -95,7 +96,7 @@ let r;
 let api2;
 
 
-for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
+for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilliseconds){
      
      api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
      times.push(i);
@@ -110,6 +111,9 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilli
      todayWeatherName.textContent = r.weather[0].main;
      todayWeatherCity.textContent = r.name;
      todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
+     windSpeed.textContent = r.wind.speed;
+     humidityPercentage.textContent = r.wind.deg + '%';
+     humidityBarPercentage.style.width = r.wind.deg+'%'
      
  
      //displayFutureWeather()
