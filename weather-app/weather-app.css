@@ -7,43 +7,114 @@
 
 html{
      max-width: 99vw;
+     max-height: 100vh;
 }
 
 body{
-     background: #222;
      max-width: 99vw;
-     color: #fff;
+}
+
+.weather-container{
+     width: 100vw;
+     height: 100Vh;
+     background-color: burlywood;
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }
 
 .weather-box{
-     max-width: 90vw;
+     width: 90%;
+     height: 90%;
      margin: 0 auto;
      display: flex;
-     justify-content: space-between;
+     justify-content: space-evenly;
      flex-wrap: wrap;
+     background-color: blueviolet;
+     padding: 2rem;
+     border-radius: 2rem;
+}
+
+
+.weather-date-place h3, .weather-name{
+     margin: 2rem;
 }
 
 .weather-status{
      display: flex;
      flex-direction: column;
      text-align: center;
+     justify-content: space-evenly;
 }
 
 .weather-details{
      display: flex;
      flex-direction: column;
+     justify-content: space-evenly;
 }
 
 .search-box{
      display: flex;
-     justify-content: space-evenly;
+     justify-content: space-between;
+     align-items: center;
+     height: 5vh;
 }
+
+.search-box #search-value{
+     width: 15rem;
+     height: 90;
+     font-size: 1.5rem;
+     outline: none;
+     border: none;
+     padding: .5rem;
+     border-radius: .5rem;
+}
+
+.search-box #search-btn{
+     font-size: 1.5rem;
+     padding: .5rem 1rem;
+     cursor: pointer;
+     border-radius: 1rem;
+     margin-left: 2rem;
+}
+
+.change-measure{
+     display: flex;
+}
+
+.change-measure 
+
+.label, label{
+     width: 60px;
+     height: 40px !important;
+     background-color: #aaa;
+     color: #fff;
+     font-weight: bolder;
+     font-size: 2rem;
+     margin: 2px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+     border-radius: 10px;
+}
+
+input[type='radio']{
+     visibility: hidden;
+     cursor: pointer;
+}
+
 
 .future-weather{
      display: flex;
      flex-wrap: wrap;
      justify-content: space-evenly;
      text-align: center;
+     gap: 1rem;
+}
+
+.future-weather > div{
+     border: 2px dotted #111;
 }
 
 .atmospheric-conditions{
@@ -52,6 +123,28 @@ body{
      text-align: center;
 }
 
+@media (max-width: 1200px){
+
+     .show-weather{
+          display: flex;
+          align-items: center;
+     }
+
+     .show-weather h2{
+          margin: 2rem 0 0 2rem;
+     }
+     .weather-status{
+               width: 100%;
+               align-items: center;
+               flex-direction: row;
+               justify-content: space-evenly;
+     }
+
+     
+     .weather-details{
+          width: 100%;
+     }
+}
 
 
 

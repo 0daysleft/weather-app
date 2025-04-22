@@ -40,59 +40,74 @@
           </div>
 </div> -->
 
-<section class="weather-box">
-     <div class="weather-status">
-          <div class="show-weather">
-               <div class="weather-image"><img src="./images/clouds.png" alt="" srcset=""></div>
-               <h2 class="weather-temperature"> 21°C</h2> 
-               <h2 class="weather-name" >Sunny</h2>
-          </div>
-          <div class="weather-date-place">
-               <h3 class="weather-date">20th May 2090</h3>
-               <h2 class="weather-city">Emirates</h2>
-          </div>
-     </div>
-
-     <div class="weather-details">
-          <div class="search-box">
-               <div class="search-inputs">
-                    <input type="text" name="text" id="search-value" placeholder="Search By City">
-                    <button id="search-btn">Go</button>
+<section class="weather-container">
+     <div class="weather-box">
+          <div class="weather-status">
+               <div class="show-weather">
+                    <div class="weather-image"><img src="./images/clouds.png" alt="" srcset=""></div>
+                    <div class="show-weather-h2">
+                    <h2 class="weather-temperature"> 21°C</h2> 
+                    <h2 class="weather-name" >Sunny</h2>
+                    </div>
                </div>
-               <div class="change-measure">
-                    <button id="celcious" >°C</button>
-                    <button id="fahrenheit">°F</button>
+               <div class="weather-date-place">
+                    <h3 class="weather-date">20th May 2090</h3>
+                    <h2 class="weather-city">Emirates</h2>
                </div>
           </div>
 
-          <div class="future-weather">
-               <div class="next-day">
-                    <h2 class="next-day-date">12th May</h2>
-                    <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
-                    <h3  class="next-weather-temperature" > 11°C - 21°C</h3>
-               </div>
-               <div class="second-day">
-                    <h2 class="second-day-date">12th May</h2>
-                    <div class="second-day-weather-image"><img src="./images/drizzle.png" alt=""></div>
-                    <h3  class="second-weather-temperature" > 11°C - 21°C</h3>
-               </div>
-               <div class="third-day">
-                    <h2 class="third-day-date">12th May</h2>
-                    <div class="third-day-weather-image"><img src="./images/mist.png" alt=""></div>
-                    <h3  class="third-weather-temperature" > 11°C - 21°C</h3>
-               </div>
-          </div>
+          <div class="weather-details">
+               <div class="search-box">
 
-          <div class="atmospheric-conditions">
-               <div class="wind-status">
-                    <h2>Wind Status</h2>
-                    <h1 class="wind-speed">3 Km/hr</h1>
-                    <h3></h3>
+                    <div class="search-inputs">
+                         <input type="text" name="text" id="search-value" placeholder="Search By City">
+                         <button id="search-btn">Go</button>
+                    </div>
+
+                    <div class="change-measure">
+
+                         <div class="label">
+                              <label for="celcious">°C  
+                              <input type="radio" name="temperature" id="celcious"/>
+                              </label>
+                         </div>
+
+                    <div class="label">
+                              <label for="fahrenheit">°F</label>
+                              <input type="radio" name="temperature" id="fahrenheit">
+                         </div>
+                    </div>
                </div>
-               <div class="humidity-status">
-                    <h2>Humidity Status</h2>
-                    <h1 class="humidity-percentage">80%</h1>
-                    <div class="humidity-bar"></div>
+
+               <div class="future-weather">
+                    <div class="next-day">
+                         <h2 class="next-day-date">12th May</h2>
+                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+                         <h3  class="next-weather-temperature" > 11°C - 21°C</h3>
+                    </div>
+                    <div class="second-day">
+                         <h2 class="second-day-date">12th May</h2>
+                         <div class="second-day-weather-image"><img src="./images/drizzle.png" alt=""></div>
+                         <h3  class="second-weather-temperature" > 11°C - 21°C</h3>
+                    </div>
+                    <div class="third-day">
+                         <h2 class="third-day-date">12th May</h2>
+                         <div class="third-day-weather-image"><img src="./images/mist.png" alt=""></div>
+                         <h3  class="third-weather-temperature" > 11°C - 21°C</h3>
+                    </div>
+               </div>
+
+               <div class="atmospheric-conditions">
+                    <div class="wind-status">
+                         <h2>Wind Status</h2>
+                         <h1 class="wind-speed">3 Km/hr</h1>
+                         <h3></h3>
+                    </div>
+                    <div class="humidity-status">
+                         <h2>Humidity Status</h2>
+                         <h1 class="humidity-percentage">80%</h1>
+                         <div class="humidity-bar"></div>
+                    </div>
                </div>
           </div>
      </div>
