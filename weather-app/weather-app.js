@@ -92,7 +92,7 @@ let timesLen;
 let nowWeather2;
 let  a;
 let r;
-//var api2;
+let api2;
 
 
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
@@ -110,14 +110,14 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilli
      todayWeatherName.textContent = r.weather[0].main;
      todayWeatherCity.textContent = r.name;
      todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
-
-     timesLen = times.length -1 
+     
+ 
      //displayFutureWeather()
      
           document.querySelector('.future-weather').innerHTML += 
                     `
                     <div class="next-day">
-                         <h2 class="next-day-date">${new Date(times[timesLen]).toDateString()}</h2>
+                         <h2 class="next-day-date">${new Date(times[1]).toDateString()}</h2>
                          <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
                          <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
                     </div>
