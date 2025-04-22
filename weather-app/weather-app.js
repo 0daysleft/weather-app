@@ -51,7 +51,7 @@ const humidityPercentage = document.querySelector('.humidity-percentage')
 
 
 
-
+/*
 
 async function checkWeather(city){
           const response = await fetch(apiUrl + city + `
@@ -95,3 +95,5 @@ async function checkWeather(city){
 searchBtn.addEventListener("click", () => {
           checkWeather(searchBox.value);
 })
+
+*/
