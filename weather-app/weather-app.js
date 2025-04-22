@@ -50,13 +50,15 @@ let time = new Date().getTime().toString();
 let dayMilliseconds =  86400000;
 
 //console.log(Number(time) + (dayMilliseconds));
-let api = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&appid=${apiKey}`
+let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&appid=${apiKey}`
+
+//let api = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${time}&appid=${apiKey}`
 
 async function nowWeather() {
      let a = await fetch(api)
      let r = await a.json();
      //console.log(new Date(r.dt).toDateString());
-     console.log(r.main)
+     console.log(r)
      //console.log(new Date(time - r.dt).toLocaleTimeString())
 
      // let weather = r.weather[0].main;
@@ -87,37 +89,37 @@ async function nowWeather() {
 
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 3)); i += dayMilliseconds){
      let times = new Date(i).toLocaleDateString();
-     let api2 = `https://api.openweathermap.org/data/2.5/weather?units=metric?q=nairobi&dt=${i}&appid=${apiKey}`
+     let api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+
      async function nowWeather2() {
      let a = await fetch(api2)
      let r = await a.json();
 
-     let weather = r.weather[0].main;
-     let weatherDesc = r.weather[0].description;
-     let windTemp = r.weather[0].main.temp
+     // todayWeatherName.textContent = r.weather[0].main;
+     // let weatherDesc = r.weather[0].description;
+     // let windTemp = r.weather[0].main.temp
  
-     console.log(
-          `
-          \nThere will be ${weather} at ${times}, weather description ${windTemp}
-          `
-     )
+     // console.log(
+     //      `
+     //      \nThere will be ${weather} at ${times}, weather description ${windTemp}
+     //      `
+     // )
+
+     console.log(r)
 
      
 }
 
 //nowWeather2();
+
+nowWeather2();
 
      
      //console.log(i);
      //console.log(new Date(i));
 }
 
-
-
-
-
 //nowWeather2();
-
 //console.log(document.querySelectorAll('input[type="radio"]'));
 document.querySelectorAll('input[type="radio"]').forEach (
      (element) => {
