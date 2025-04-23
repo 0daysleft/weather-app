@@ -11,6 +11,8 @@ html{
 
 body{
      max-width: 99vw;
+     background: linear-gradient(to top, #fbc2eb, #a6c1ee);
+     color: #3a3d99;
 }
 
 /* Data Loading Spining Element */
@@ -178,6 +180,7 @@ input[type='radio']:checked + .label {
      width: 45%;
      height: 300px;
      display: flex;
+     border-radius: 2rem;
      align-items: center;
      justify-content: space-evenly;
      flex-direction: column;
