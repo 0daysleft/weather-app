@@ -61,12 +61,15 @@ let y = searchInput.value || "nairobi";
 //°F = (°C × 9/5) + 32
 
 const nowWeather = async (api2) => {
+     const start = performance.now();
      try{
      a = await fetch(api2)
      r = await a.json();
+     const end = performance.now();
      //console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
+     console.log("Start: ",  start, "\nEnd: ", end, "Total : ", (end - start) )
      if(r.cod >= 400){
           badMessage = r.message;
           return
@@ -180,7 +183,7 @@ function displayFutureWeather(){
      }
 }
 
-nowWeather(api2);
+//nowWeather(api2);
 
 function displayCorrectImages(weather){
      if(weather == "Clouds"){
