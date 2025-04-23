@@ -103,15 +103,16 @@ nowWeather2 = async () => {
      r = await a.json();
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
+     let defaultData = r.list[0]
      let city_name = r.city.name;
-     let temp = r.list[0].main.temp
-     let weather = r.list[0].weather[0].main;
-     let weatherDesc = r.list[0].weather[0].description;
-     let windSpeed = r.list[0].wind.speed;
-     let humidity = r.list[0].main.humidity
-     let date = r.list[0].dt_txt;
-     let date2 = new Date(r.list[0].dt * 19).toDateString();
-     //console.log(r.list[0].weather)
+     let temp = defaultData.main.temp
+     let weather = defaultData.weather[0].main;
+     let weatherDesc = defaultData.weather[0].description;
+     let windSpeed = defaultData.wind.speed;
+     let humidity = defaultData.main.humidity
+     let date = defaultData.dt_txt;
+     let date2 = new Date(defaultData.dt * 1000).toDateString();
+     console.log(defaultData.weather)
      console.log(
           
           `
