@@ -112,20 +112,21 @@ nowWeather2 = async () => {
      let humidity = defaultData.main.humidity
      let date = defaultData.dt_txt;
      let date2 = new Date(defaultData.dt * 1000).toDateString();
-     console.log(defaultData.weather)
-     console.log(
+     //console.log(length)
+     
+     // console.log(
           
-          `
-          City Name: ${city_name} \n
-          Temp: ${temp} \n
-          Weather: ${weather} \n
-          Date: ${date}  \n
-          Date 2: ${date2} \n
-          Weather Desc: ${weatherDesc} \n
-          Wind Speed: ${windSpeed} \n
-          Humidity: ${humidity}
-          `
-     )
+     //      `
+     //      City Name: ${city_name} \n
+     //      Temp: ${temp} \n
+     //      Weather: ${weather} \n
+     //      Date: ${date}  \n
+     //      Date 2: ${date2} \n
+     //      Weather Desc: ${weatherDesc} \n
+     //      Wind Speed: ${windSpeed} \n
+     //      Humidity: ${humidity}
+     //      `
+     // )
      
 
      // todayWeatherDate.textContent = new Date(times[0]).toDateString();
@@ -136,17 +137,11 @@ nowWeather2 = async () => {
      // humidityPercentage.textContent = r.wind.deg + '%';
      // humidityBarPercentage.style.width = r.wind.deg+'%'
      
+     displayFutureWeather()
      //console.log(r)
      //displayFutureWeather()
      
-          // document.querySelector('.future-weather').innerHTML += 
-          //           `
-          //           <div class="next-day">
-          //                <h2 class="next-day-date">${new Date(times[2]).toDateString()}</h2>
-          //                <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
-          //                <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
-          //           </div>
-          //           `
+         
                   //console.log(r)  
      
 
@@ -170,7 +165,33 @@ nowWeather2 = async () => {
      //console.log(i);
      //console.log(new Date(i));
 }
-nowWeather2();
+
+
+function displayFutureWeather(){
+
+     
+     for(let i = 0; i <= r.list.length -1; i += 8){
+          let constData = r.list[i]
+          let temp = constData.main.temp
+          let weather = constData.weather[0].main;
+          let weatherDesc = constData.weather[0].description;
+          //let date = constData.dt_txt;
+          let date = new Date(constData.dt * 1000).toDateString();
+     
+      document.querySelector('.future-weather').innerHTML += 
+                    `
+                    <div class="next-day">
+                         <h2 class="next-day-date">${date}</h2>
+                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+                         <h3  class="next-weather-temperature" > ${temp}</h3>
+                         <h3  class="next-weather-temperature" > ${weather}</h3>
+                         <h3  class="next-weather-temperature" > ${weatherDesc}</h3>
+                    </div>
+                    `
+     }
+}
+
+//nowWeather2();
 
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
