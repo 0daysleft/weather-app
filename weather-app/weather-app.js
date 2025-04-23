@@ -1,5 +1,5 @@
 
-const apiKey = "9a88612c8d7f31a8935a8d1e9b1660a";
+const apiKey = "d9c1a4603e9c90bd3fb43db001f68315";
 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
@@ -59,28 +59,28 @@ async function nowWeather() {
      let a = await fetch(api)
      let r = await a.json();
      //console.log(new Date(r.dt).toDateString());
-     console.log(r)
+     //console.log(r)
      //console.log(new Date(time - r.dt).toLocaleTimeString())
 
-     // let weather = r.weather[0].main;
-     // let weatherDesc = r.weather[0].description;
-     // let windSpeed =  r.wind.speed
-     // let windDeg = r.wind.deg;
-     // let windgust = r.wind.gust;
-     // let country = r.sys.country;
-     // let countrySunrise = new Date(r.sys.sunrise).toUTCString();
-     // let countrySunset = new Date(r.sys.sunset).toUTCString();
+     let weather = r.weather[0].main;
+     let weatherDesc = r.weather[0].description;
+     let windSpeed =  r.wind.speed
+     let windDeg = r.wind.deg;
+     let windgust = r.wind.gust;
+     let country = r.sys.country;
+     let countrySunrise = new Date(r.sys.sunrise).toUTCString();
+     let countrySunset = new Date(r.sys.sunset).toUTCString();
 
-     // console.log(
-     //      "Weather: ", weather,
-     //      "\nWeatherDesc: ", weatherDesc,
-     //      "\nWindSpeed: ", windSpeed,
-     //      "\nWindDeg: ", windDeg,
-     //      "\nWindGust: ", windgust,
-     //      "\nCountry: ", country, 
-     //      "\nCountrySunrise: ", countrySunrise,
-     //      "\nCountrySunSet: ", countrySunset
-     // )
+     console.log(
+          "Weather: ", weather,
+          "\nWeatherDesc: ", weatherDesc,
+          "\nWindSpeed: ", windSpeed,
+          "\nWindDeg: ", windDeg,
+          "\nWindGust: ", windgust,
+          "\nCountry: ", country, 
+          "\nCountrySunrise: ", countrySunrise,
+          "\nCountrySunSet: ", countrySunset
+     )
 }
 
 //nowWeather();
@@ -96,11 +96,12 @@ let api2;
      api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
 
 
+//°F = (°C × 9/5) + 32
 
 nowWeather2 = async () => {
      a = await fetch(api2)
      r = await a.json();
-     console.log("Weather Today: ", r.list[0])
+     //console.log("Weather Today: ", r)
      //console.log(Date.now())
      let city_name = r.city.name;
      let temp = r.list[0].main.temp
