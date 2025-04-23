@@ -64,7 +64,7 @@ const nowWeather = async (api2) => {
      try{
      a = await fetch(api2)
      r = await a.json();
-     console.log(r)
+     //console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
      if(r.cod >= 400){
