@@ -51,7 +51,8 @@ let weatherPic;
 let  a;
 let r;
 let api2;
-
+let badMessage;
+let badMessageCity;
 
 let y = searchInput.value || "nairobi";
      api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
@@ -63,9 +64,15 @@ const nowWeather = async (api2) => {
      try{
      a = await fetch(api2)
      r = await a.json();
-     console.log(r)
+     //console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
+     if(r.cod){
+          badMessage = r.message;
+          badMessageCity = r.city.name
+          return
+     }
+     else{
      let defaultData = r.list[0]
      let city_name = r.city.name;
      let temp = defaultData.main.temp
@@ -105,10 +112,11 @@ const nowWeather = async (api2) => {
 
      displayFutureWeather()
      }
+     }
      catch(error){
 
           document.querySelector(".weather-container").style.height = '100vh'
-          document.querySelector(".weather-container").innerHTML = `No City Matches Your Query </br> <button onclick="location.reload()"
+          document.querySelector(".weather-container").innerHTML = `${badMessage} ${badMessage}No City Matches Your Query </br> <button onclick="location.reload()"
           style=" padding: 1rem; cursor: pointer "
           >Search Again</button>`;
      }
