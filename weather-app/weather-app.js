@@ -170,7 +170,7 @@ nowWeather2 = async () => {
 function displayFutureWeather(){
 
      
-     for(let i = 0; i <= r.list.length -1; i += 8){
+     for(let i = 1; i <= r.list.length -1; i += 8){
           let constData = r.list[i]
           let temp = constData.main.temp
           let weather = constData.weather[0].main;
