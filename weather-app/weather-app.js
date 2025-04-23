@@ -68,7 +68,7 @@ measuresRadio.forEach (
                                    }
                               )
                          }
-                         nowWeather(api2)
+                         nowWeather(api2);
                     }
                     
                }
@@ -153,9 +153,9 @@ function displayFutureWeather(){
                     <div class="next-day" style=" min-width: 300px">
                          <h2 class="next-day-date">${date}</h2>
                          <div class="next-day-weather-image"><img src="${weatherPic}" alt=""></div>
-                         <h3  class="next-weather-temperature" > ${temp+"°C"}</h3>
-                         <h3  class="next-weather-temperature "style=" margin: 1rem 0" > ${weather}</h3>
-                         <h3  class="next-weather-temperature" style=" text-transform: capitalize; margin-bottom: 1rem"> ${weatherDesc}</h3>
+                         <h3  class="next-weather-temp" > ${temp+"°C"}</h3>
+                         <h3  class="next-weather-name"style=" margin: 1rem 0" > ${weather}</h3>
+                         <h3  class="next-weather-desc" style=" text-transform: capitalize; margin-bottom: 1rem"> ${weatherDesc}</h3>
                     </div>
                     `
 
