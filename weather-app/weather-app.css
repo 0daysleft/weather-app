@@ -246,7 +246,6 @@ input[type='radio']:checked + .label {
      }
 }
 
-
 @media (max-width: 600px){
 
      .show-weather{
@@ -266,6 +265,8 @@ input[type='radio']:checked + .label {
 
      .search-box{
                flex-wrap: wrap;
+               justify-content: center;
+               align-items: center;
                flex-direction: column;
                margin: 2rem 0;
                min-width: 100% !important;
@@ -273,6 +274,7 @@ input[type='radio']:checked + .label {
 
      .search-box #search-value{
                /* width: 11rem; */
+               max-width: 90% !important;
                margin: 0;
      }
 
@@ -280,12 +282,17 @@ input[type='radio']:checked + .label {
                margin: 1rem auto;
      }
 
+
+     .search-box .change-measure{
+          margin: 1rem .11rem;
+     }
+     
      .weather-details{
           width: 100%;
      }
 
      .wind-status, .humidity-status{
-               width: 70%;
+               width: 100%;
                margin: 2rem 0;
      }
 }

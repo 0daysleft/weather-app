@@ -96,7 +96,7 @@ const nowWeather = async (api2) => {
      else{
      let defaultData = r.list[0]
      let city_name = r.city.name;
-     let temp = defaultData.main.temp
+     let temp = defaultData.main.temp+"°C"
      let weather = defaultData.weather[0].main;
      let weatherDesc = defaultData.weather[0].description;
      let windSpeed = defaultData.wind.speed;
@@ -190,12 +190,12 @@ function displayFutureWeather(){
      
       document.querySelector('.future-weather').innerHTML += 
                     `
-                    <div class="next-day">
+                    <div class="next-day" style=" min-width: 300px">
                          <h2 class="next-day-date">${date}</h2>
                          <div class="next-day-weather-image"><img src="${weatherPic}" alt=""></div>
-                         <h3  class="next-weather-temperature" > ${temp}</h3>
-                         <h3  class="next-weather-temperature" > ${weather}</h3>
-                         <h3  class="next-weather-temperature" > ${weatherDesc}</h3>
+                         <h3  class="next-weather-temperature" > ${temp+"°C"}</h3>
+                         <h3  class="next-weather-temperature "style=" margin: 1rem 0" > ${weather}</h3>
+                         <h3  class="next-weather-temperature" style=" text-transform: capitalize; margin-bottom: 1rem"> ${weatherDesc}</h3>
                     </div>
                     `
 
