@@ -117,11 +117,11 @@ nowWeather2 = async () => {
      // console.log(
           
      //      `
-     //      City Name: ${city_name} \n
-     //      Temp: ${temp} \n
-     //      Weather: ${weather} \n
+     //      City Name: ${} \n
+     //      Temp: ${} \n
+     //      Weather: ${} \n
      //      Date: ${date}  \n
-     //      Date 2: ${date2} \n
+     //      Date 2: ${} \n
      //      Weather Desc: ${weatherDesc} \n
      //      Wind Speed: ${windSpeed} \n
      //      Humidity: ${humidity}
@@ -129,14 +129,14 @@ nowWeather2 = async () => {
      // )
      
 
-     // todayWeatherDate.textContent = new Date(times[0]).toDateString();
-     // todayWeatherName.textContent = r.weather[0].main;
-     // todayWeatherCity.textContent = r.name;
-     // todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
-     // windSpeed.textContent = r.wind.speed;
-     // humidityPercentage.textContent = r.wind.deg + '%';
-     // humidityBarPercentage.style.width = r.wind.deg+'%'
-     
+     // todayWeatherDate.textContent = date2;
+     // todayWeatherName.textContent = weather;
+     // todayWeatherCity.textContent = city_name;
+     // todayWeatherTemperature.innerHTML = temp
+     // windSpeed.textContent = windSpeed;
+     // humidityPercentage.textContent = humidity'%';
+     // humidityBarPercentage.style.width = humidity+'%'
+
      displayFutureWeather()
      //console.log(r)
      //displayFutureWeather()
