@@ -26,6 +26,7 @@ const changeToFahrenheit = document.querySelector("#fahrenheit");
 //Wind And Humidity Information
 
 const currentWindSpeed = document.querySelector('.atmospheric-conditions .wind-status .wind-speed')
+const windGust = document.querySelector(".wind-gust");
 const humidityPercentage = document.querySelector('.humidity-percentage')
 const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 
@@ -104,6 +105,7 @@ const nowWeather = async (api2) => {
      let weather = defaultData.weather[0].main;
      let weatherDesc = defaultData.weather[0].description;
      let windSpeed = defaultData.wind.speed;
+     let wind_gust = defaultData.wind.gust
      let humidity = defaultData.main.humidity
      let date2 = new Date(defaultData.dt * 1000).toDateString();
 
@@ -116,6 +118,7 @@ const nowWeather = async (api2) => {
      todayWeatherCity.textContent = city_name;
      todayWeatherTemperature.innerHTML = temp
      currentWindSpeed.textContent = windSpeed + "Km/hr";
+     windGust.textContent = "Wind Gust: " + wind_gust + "m/s";
      humidityPercentage.textContent = humidity+'%';
      humidityBarPercentage.style.width = humidity+'%'
 
