@@ -89,8 +89,9 @@ const nowWeather = async (api2) => {
      //      `
      // )
      
-     todayWeatherImage.src = displayCorrectImages(weather);
-     console.log(todayWeatherImage.src)
+     displayCorrectImages(weather);
+
+     todayWeatherImage.src = weatherPic;
      
      todayWeatherDate.textContent = date2;
      todayWeatherName.textContent = weather;
@@ -152,6 +153,7 @@ function displayFutureWeather(){
                          <h3  class="next-weather-temperature" > ${weatherDesc}</h3>
                     </div>
                     `
+
      }
 }
 
