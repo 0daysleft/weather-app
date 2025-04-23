@@ -158,6 +158,7 @@ searchBtn.addEventListener('click',
      () =>{
           y = searchInput.value;
           userInputLocation = `https://api.openweathermap.org/data/2.5/forecast?q=${y}&appid=${apiKey}&units=metric`
+          document.querySelector('.future-weather').innerHTML = "";
           nowWeather(userInputLocation)
 
           searchInput.value = "";
