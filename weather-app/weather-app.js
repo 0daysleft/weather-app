@@ -1,5 +1,5 @@
 
-const apiKey = "d9c1a4603e9c90bd3fb43db001f68315";
+const apiKey = "0a88612c8d7f31a80035a8d1e9b1664a";
 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
@@ -48,7 +48,7 @@ const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 //https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={time}&appid={API key}
 //  
 let time = new Date().getTime().toString();
-let dayMilliseconds =  86400000;
+let dayMilliseconds =  86;
 
 //console.log(Number(time) + (dayMilliseconds));
 let api = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&appid=${apiKey}`
@@ -89,6 +89,7 @@ async function nowWeather() {
 
 
 let times = []
+let allWeatherInfo = [];
 let timesLen;
 let nowWeather2;
 let  a;
@@ -98,14 +99,20 @@ let api2;
 
 for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilliseconds){
      
-     api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+    // api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
+
+
+     api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
+
+
+
      times.push(i);
 
-     
     nowWeather2 = async () => {
      a = await fetch(api2)
      r = await a.json();
-     
+     allWeatherInfo.push(r)
+
      todayWeatherDate.textContent = new Date(times[0]).toDateString();
      
      todayWeatherName.textContent = r.weather[0].main;
@@ -115,18 +122,18 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilli
      humidityPercentage.textContent = r.wind.deg + '%';
      humidityBarPercentage.style.width = r.wind.deg+'%'
      
- 
+     //console.log(r)
      //displayFutureWeather()
      
-          document.querySelector('.future-weather').innerHTML += 
-                    `
-                    <div class="next-day">
-                         <h2 class="next-day-date">${new Date(times[1]).toDateString()}</h2>
-                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
-                         <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
-                    </div>
-                    `
-                  console.log(r)  
+          // document.querySelector('.future-weather').innerHTML += 
+          //           `
+          //           <div class="next-day">
+          //                <h2 class="next-day-date">${new Date(times[2]).toDateString()}</h2>
+          //                <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+          //                <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
+          //           </div>
+          //           `
+                  //console.log(r)  
      
 
       //console.log(times)
@@ -153,7 +160,10 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilli
 //console.log(new Date(i));
 nowWeather2();
 }
-console.log("Response Out: ",r)
+
+console.log("All Info: ", allWeatherInfo)
+console.log("Time: ", times)
+//console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
 // function displayFutureWeather(){
 //      for(let i = 1; i <= times.length - 1; i++){
