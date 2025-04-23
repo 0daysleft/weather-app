@@ -104,7 +104,6 @@ const nowWeather = async (api2) => {
      let weatherDesc = defaultData.weather[0].description;
      let windSpeed = defaultData.wind.speed;
      let humidity = defaultData.main.humidity
-     let date = defaultData.dt_txt;
      let date2 = new Date(defaultData.dt * 1000).toDateString();
 
      displayCorrectImages(weather);
@@ -145,7 +144,6 @@ function displayFutureWeather(){
           let temp = constData.main.temp
           let weather = constData.weather[0].main;
           let weatherDesc = constData.weather[0].description;
-          //let date = constData.dt_txt;
           displayCorrectImages(weather)
           let date = new Date(constData.dt * 1000).toDateString();
      
@@ -162,8 +160,6 @@ function displayFutureWeather(){
 
      }
 }
-
-//
 
 function displayCorrectImages(weather){
      if(weather == "Clouds"){
@@ -200,25 +196,6 @@ searchBtn.addEventListener('click',
           searchInput.value = "";
      }
 )
-
-
-//console.log("Response Out: ",r)
-//console.log(new Date(times[2]).toDateString())
-// function displayFutureWeather(){
-//      for(let i = 1; i <= times.length - 1; i++){
-//           document.querySelector('.future-weather').innerHTML += 
-//                     `
-//                     <div class="next-day">
-//                          <h2 class="next-day-date">${new Date(times[i]).toDateString()}</h2>
-//                          <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
-//                          <h3  class="next-weather-temperature" > ${(r.main.temp - 273.15).toFixed(2)+"°C"}</h3>
-//                     </div>
-//                     `
-//      }
-// }
-
-//nowWeather2();
-//console.log(document.querySelectorAll('input[type="radio"]'));
 
 
 
