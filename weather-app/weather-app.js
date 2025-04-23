@@ -81,18 +81,17 @@ let y = searchInput.value || "nairobi";
 document.querySelectorAll('input[type="radio"]').forEach (
      (element) => {
           element.addEventListener('click', () => {
-               
+               changeMeasures(temp)
           })
      }
 )
 
-function changeMeasures(){
+function changeMeasures(temp){
           if(element.checked.id == 'fahrenheit'){
-     
-               console.log(element.id)
+               return (temp * 9/5) + 32;
           }
           else{
-               console.log(element.id, " Not fahrenheit")
+               return (temp - 32) * 5/9
           }
 }
 
@@ -115,7 +114,7 @@ const nowWeather = async (api2) => {
      else{
      let defaultData = r.list[0]
      let city_name = r.city.name;
-     let temp = defaultData.main.temp+"°C"
+     let temp = defaultData.main.temp
      let weather = defaultData.weather[0].main;
      let weatherDesc = defaultData.weather[0].description;
      let windSpeed = defaultData.wind.speed;
@@ -145,7 +144,7 @@ const nowWeather = async (api2) => {
      todayWeatherDate.textContent = date2;
      todayWeatherName.textContent = weather;
      todayWeatherCity.textContent = city_name;
-     todayWeatherTemperature.innerHTML = temp
+     todayWeatherTemperature.innerHTML = changeMeasures(temp)
      currentWindSpeed.textContent = windSpeed + "Km/hr";
      humidityPercentage.textContent = humidity+'%';
      humidityBarPercentage.style.width = humidity+'%'
@@ -212,7 +211,7 @@ function displayFutureWeather(){
                     <div class="next-day" style=" min-width: 300px">
                          <h2 class="next-day-date">${date}</h2>
                          <div class="next-day-weather-image"><img src="${weatherPic}" alt=""></div>
-                         <h3  class="next-weather-temperature" > ${temp+"°C"}</h3>
+                         <h3  class="next-weather-temperature" > ${changeMeasures(temp)}</h3>
                          <h3  class="next-weather-temperature "style=" margin: 1rem 0" > ${weather}</h3>
                          <h3  class="next-weather-temperature" style=" text-transform: capitalize; margin-bottom: 1rem"> ${weatherDesc}</h3>
                     </div>
@@ -261,7 +260,7 @@ searchBtn.addEventListener('click',
      }
 )
 
-
+nowWeather(api2);
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
 // function displayFutureWeather(){
