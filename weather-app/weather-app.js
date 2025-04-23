@@ -1,21 +1,21 @@
 let apiTime;
 let timer;
-let timeOut;
-document.addEventListener('DOMContentLoaded', 
-     () => {
-     
-          setTimeout( 
-               () => {
                     document.querySelector('.spinner-container').style.display = 'none'
-                    document.querySelector('.weather-container').style.display = 'flex'
-                    console.log("Displayed")
-               }, 1000
-          )
+                                        document.querySelector('.weather-container').style.display = 'flex'
+let timeOut;
+// document.addEventListener('DOMContentLoaded', 
+//      () => {
      
-          nowWeather(api2);
-         // clearTimeout(timeOut)
-     }
-)
+//           setTimeout( 
+//                () => {
+//                     console.log("Displayed")
+//                }, 1000
+//           )
+     
+//           // clearTimeout(timeOut)
+//      }
+// )
+//nowWeather(api2);
 
 const apiKey = "d9c1a4603e9c90bd3fb43db001f68315";
 
@@ -77,6 +77,25 @@ let y = searchInput.value || "nairobi";
 
 
 //°F = (°C × 9/5) + 32
+
+document.querySelectorAll('input[type="radio"]').forEach (
+     (element) => {
+          element.addEventListener('click', () => {
+               
+          })
+     }
+)
+
+function changeMeasures(){
+          if(element.checked.id == 'fahrenheit'){
+     
+               console.log(element.id)
+          }
+          else{
+               console.log(element.id, " Not fahrenheit")
+          }
+}
+
 
 const nowWeather = async (api2) => {
      const start = performance.now();
@@ -260,18 +279,6 @@ searchBtn.addEventListener('click',
 
 //nowWeather2();
 //console.log(document.querySelectorAll('input[type="radio"]'));
-document.querySelectorAll('input[type="radio"]').forEach (
-     (element) => {
-          element.addEventListener('click', () => {
-               if(element.checked){
-               //console.log(element.id)
-               }
-               else{
-                   // console.log(element.id, " Not")
-               }
-          })
-     }
-)
 
 
 
