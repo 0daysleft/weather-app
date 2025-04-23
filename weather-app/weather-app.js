@@ -1,3 +1,21 @@
+let apiTime;
+let timer;
+let timeOut;
+document.addEventListener('DOMContentLoaded', 
+     () => {
+     
+          setTimeout( 
+               () => {
+                    document.querySelector('.spinner-container').style.display = 'none'
+                    document.querySelector('.weather-container').style.display = 'flex'
+                    console.log("Displayed")
+               }, 1000
+          )
+     
+          nowWeather(api2);
+         // clearTimeout(timeOut)
+     }
+)
 
 const apiKey = "d9c1a4603e9c90bd3fb43db001f68315";
 
@@ -66,10 +84,11 @@ const nowWeather = async (api2) => {
      a = await fetch(api2)
      r = await a.json();
      const end = performance.now();
+     apiTime = (end - start)
      //console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
-     console.log("Start: ",  start, "\nEnd: ", end, "Total : ", (end - start) )
+     //console.log("Start: ",  start, "\nEnd: ", end, "Total : ", (end - start) )
      if(r.cod >= 400){
           badMessage = r.message;
           return
@@ -183,7 +202,7 @@ function displayFutureWeather(){
      }
 }
 
-//nowWeather(api2);
+//
 
 function displayCorrectImages(weather){
      if(weather == "Clouds"){
@@ -207,7 +226,10 @@ function displayCorrectImages(weather){
 
 searchBtn.addEventListener('click', 
      () =>{
+
+          timer();
           let userInputLocationValue = searchInput.value;
+          
 
           if(userInputLocationValue == "" || userInputLocationValue == " "){
                return
@@ -235,7 +257,6 @@ searchBtn.addEventListener('click',
 //                     `
 //      }
 // }
-
 
 //nowWeather2();
 //console.log(document.querySelectorAll('input[type="radio"]'));
