@@ -1,8 +1,7 @@
-let apiTime;
-let timer;
-                    document.querySelector('.spinner-container').style.display = 'none'
-                                        document.querySelector('.weather-container').style.display = 'flex'
-let timeOut;
+
+document.querySelector('.spinner-container').style.display = 'none'
+document.querySelector('.weather-container').style.display = 'flex'
+
 // document.addEventListener('DOMContentLoaded', 
 //      () => {
      
@@ -78,23 +77,30 @@ api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKe
 
 
 //°F = (°C × 9/5) + 32
-let inputId;
-document.querySelectorAll('input[type="radio"]').forEach (
-     (element) => {
-          element.addEventListener('click', () => {
-               inputId = element.id
-               //changeMeasures(temp)
+let inputId = document.querySelector('input[type="radio"]:checked').id;
+let measuresRadio = document.querySelectorAll('input[type="radio"]');
+
+measuresRadio.forEach (
+     (radio) => {
+          radio.addEventListener('change', function () {
+               if(this.checked){
+                    inputId = this.id
+
+                    if(inputId == 'fahrenheit'){
+                         document.querySelector(".weather-container").textContent = " "
+                         nowWeather(api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=imperials`)
+                    }
+                    // else if(inputId == 'celcius'){
+                         
+                    // }
+                    
+               }
           })
      }
 )
 
-function changeMeasures(temp){
-          if(inputId == 'fahrenheit'){
-               return (temp * 9/5) + 32;
-          }
-          else if(inputId == 'celcious'){
-               return (temp - 32) * 5/9
-          }
+function changeMeasures(temp1){
+     
 }
 
 
@@ -117,7 +123,7 @@ const nowWeather = async (api2) => {
      else{
      let defaultData = r.list[0]
      let city_name = r.city.name;
-     temp = defaultData.main.temp
+     let temp = defaultData.main.temp+"°C"
      let weather = defaultData.weather[0].main;
      let weatherDesc = defaultData.weather[0].description;
      let windSpeed = defaultData.wind.speed;
@@ -147,12 +153,13 @@ const nowWeather = async (api2) => {
      todayWeatherDate.textContent = date2;
      todayWeatherName.textContent = weather;
      todayWeatherCity.textContent = city_name;
-     todayWeatherTemperature.innerHTML = changeMeasures(temp)
+     todayWeatherTemperature.innerHTML = temp
      currentWindSpeed.textContent = windSpeed + "Km/hr";
      humidityPercentage.textContent = humidity+'%';
      humidityBarPercentage.style.width = humidity+'%'
 
      displayFutureWeather()
+
      }
      }
      catch(error){
@@ -193,13 +200,13 @@ const nowWeather = async (api2) => {
      //console.log(new Date(i));
 }
 
-//nowWeather(api2);
+nowWeather(api2);
 function displayFutureWeather(){
 
      
      for(let i = 9; i <= r.list.length -1; i += 8){
           let constData = r.list[i]
-          temp = constData.main.temp
+          let temp = constData.main.temp
           let weather = constData.weather[0].main;
           let weatherDesc = constData.weather[0].description;
           //let date = constData.dt_txt;
@@ -211,7 +218,7 @@ function displayFutureWeather(){
                     <div class="next-day" style=" min-width: 300px">
                          <h2 class="next-day-date">${date}</h2>
                          <div class="next-day-weather-image"><img src="${weatherPic}" alt=""></div>
-                         <h3  class="next-weather-temperature" > ${changeMeasures(temp)}</h3>
+                         <h3  class="next-weather-temperature" > ${temp+"°C"}</h3>
                          <h3  class="next-weather-temperature "style=" margin: 1rem 0" > ${weather}</h3>
                          <h3  class="next-weather-temperature" style=" text-transform: capitalize; margin-bottom: 1rem"> ${weatherDesc}</h3>
                     </div>
