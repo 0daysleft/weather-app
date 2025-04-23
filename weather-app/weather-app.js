@@ -68,7 +68,7 @@ const nowWeather = async (api2) => {
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
      if(r.cod){
-          badMessage = r.message;
+          
           badMessageCity = r.city.name
           return
      }
