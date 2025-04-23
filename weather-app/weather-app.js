@@ -129,13 +129,13 @@ nowWeather2 = async () => {
      // )
      
 
-     // todayWeatherDate.textContent = date2;
-     // todayWeatherName.textContent = weather;
-     // todayWeatherCity.textContent = city_name;
-     // todayWeatherTemperature.innerHTML = temp
-     // windSpeed.textContent = windSpeed;
-     // humidityPercentage.textContent = humidity'%';
-     // humidityBarPercentage.style.width = humidity+'%'
+     todayWeatherDate.textContent = date2;
+     todayWeatherName.textContent = weather;
+     todayWeatherCity.textContent = city_name;
+     todayWeatherTemperature.innerHTML = temp
+     windSpeed.textContent = windSpeed;
+     humidityPercentage.textContent = humidity+'%';
+     humidityBarPercentage.style.width = humidity+'%'
 
      displayFutureWeather()
      //console.log(r)
@@ -191,7 +191,7 @@ function displayFutureWeather(){
      }
 }
 
-//nowWeather2();
+nowWeather2();
 
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
