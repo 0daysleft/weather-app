@@ -41,7 +41,7 @@ const thirdDayWeatherTemperature = document.querySelector(".third-day .third-wea
 
 //Wind And Humidity Information
 
-const windSpeed = document.querySelector('.wind-speed')
+const currentWindSpeed = document.querySelector('.atmospheric-conditions .wind-status .wind-speed')
 const humidityPercentage = document.querySelector('.humidity-percentage')
 const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 
@@ -60,8 +60,10 @@ let y = searchInput.value || "nairobi";
 //°F = (°C × 9/5) + 32
 
 const nowWeather = async (api2) => {
+     try{
      a = await fetch(api2)
      r = await a.json();
+     console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
      let defaultData = r.list[0]
@@ -97,11 +99,19 @@ const nowWeather = async (api2) => {
      todayWeatherName.textContent = weather;
      todayWeatherCity.textContent = city_name;
      todayWeatherTemperature.innerHTML = temp
-     windSpeed.textContent = windSpeed;
+     currentWindSpeed.textContent = windSpeed + "Km/hr";
      humidityPercentage.textContent = humidity+'%';
      humidityBarPercentage.style.width = humidity+'%'
 
      displayFutureWeather()
+     }
+     catch(error){
+
+          document.querySelector(".weather-container").style.height = '100vh'
+          document.querySelector(".weather-container").innerHTML = `No City Matches Your Query </br> <button onclick="location.reload()"
+          style=" padding: 1rem; cursor: pointer "
+          >Search Again</button>`;
+     }
      //console.log(r)
      //displayFutureWeather()
      
