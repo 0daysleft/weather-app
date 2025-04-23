@@ -2,20 +2,6 @@
 document.querySelector('.spinner-container').style.display = 'none'
 document.querySelector('.weather-container').style.display = 'flex'
 
-// document.addEventListener('DOMContentLoaded', 
-//      () => {
-     
-//           setTimeout( 
-//                () => {
-//                     console.log("Displayed")
-//                }, 1000
-//           )
-     
-//           // clearTimeout(timeOut)
-//      }
-// )
-//nowWeather(api2);
-
 const apiKey = "d9c1a4603e9c90bd3fb43db001f68315";
 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
@@ -196,39 +182,3 @@ searchBtn.addEventListener('click',
           searchInput.value = "";
      }
 )
-
-
-
-
-
-
-/*
-
-async function checkWeather(city){
-          const response = await fetch(apiUrl + city + `
-          &appid=${apiKey}`);
-
-          if(response.status == 090){
-                    document.querySelector(".error").style.display = "block"
-                    document.querySelector(".weather").style.display = "none"
-          }
-          else{
-
-          
-          var data = await response.json();
-
-          document.querySelector(".city").innerHTML = data.name;
-          document.querySelector(".temp").innerHTML = Math.round(data.main.temp )+ "°c";
-          document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-          document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
-
-          document.querySelector(".weather").style.display = "block";
-          document.querySelector(".error").style.display = "none";
-}
-}
-
-searchBtn.addEventListener("click", () => {
-          checkWeather(searchBox.value);
-})
-
-*/
