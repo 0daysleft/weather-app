@@ -37,25 +37,6 @@ const searchBtn= document.querySelector("#search-btn");
 const changeToCelcious = document.querySelector("#celcious");
 const changeToFahrenheit = document.querySelector("#fahrenheit");
 
-//Selecting Future Elements
-
-//Next Day
-const nextWeatherDate = document.querySelector(".next-day .next-day-date");
-const nextDayWeatherImage = document.querySelector(".next-day .next-day-weather-img img");
-const nextDayWeatherTemperature = document.querySelector(".next-day .next-weather-temperature");
-
-//Second Day After Next Day
-
-const secondWeatherDate = document.querySelector(".second-day .second-day-date");
-const secondDayWeatherImage = document.querySelector(".second-day .second-day-weather-img img");
-const secondWeatherTemperature = document.querySelector(".second-day .second-weather-temperature");
-
-//Third Day From the Next Day
-
-const thirdWeatherDate = document.querySelector(".third-day .third-day-date");
-const thirdDayWeatherImage = document.querySelector(".third-day .third-day-weather-img img");
-const thirdDayWeatherTemperature = document.querySelector(".third-day .third-weather-temperature");
-
 //Wind And Humidity Information
 
 const currentWindSpeed = document.querySelector('.atmospheric-conditions .wind-status .wind-speed')
