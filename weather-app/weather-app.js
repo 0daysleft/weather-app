@@ -49,7 +49,7 @@ const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 //  
 
 
-let nowWeather2;
+
 let  a;
 let r;
 let api2;
@@ -59,7 +59,7 @@ let api2;
 
 //°F = (°C × 9/5) + 32
 
-nowWeather2 = async () => {
+const nowWeather = async () => {
      a = await fetch(api2)
      r = await a.json();
      //console.log("Weather Today: ", r)
@@ -152,7 +152,7 @@ function displayFutureWeather(){
      }
 }
 
-nowWeather2();
+//nowWeather();
 
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
