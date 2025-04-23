@@ -70,51 +70,54 @@ let  a;
 let r;
 let api2;
  let badMessage;
+ let temp;
 // let badMessageCity;
 
-let y = searchInput.value || "nairobi";
-     api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
+//let y = searchInput.value || "nairobi";
+api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
 
 
 //°F = (°C × 9/5) + 32
-
+let inputId;
 document.querySelectorAll('input[type="radio"]').forEach (
      (element) => {
           element.addEventListener('click', () => {
+               inputId = element.checked.id
                changeMeasures(temp)
           })
      }
 )
 
 function changeMeasures(temp){
-          if(element.checked.id == 'fahrenheit'){
+          if(inputId == 'fahrenheit'){
                return (temp * 9/5) + 32;
           }
-          else{
+          else if(inputId == 'celcious'){
                return (temp - 32) * 5/9
           }
 }
 
 
 const nowWeather = async (api2) => {
-     const start = performance.now();
+     //const start = performance.now();
      try{
      a = await fetch(api2)
      r = await a.json();
-     const end = performance.now();
-     apiTime = (end - start)
-     //console.log(r)
+     //const end = performance.now();
+     //apiTime = (end - start)
+     console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
      //console.log("Start: ",  start, "\nEnd: ", end, "Total : ", (end - start) )
      if(r.cod >= 400){
           badMessage = r.message;
+          console.log(r)
           return
      }
      else{
      let defaultData = r.list[0]
      let city_name = r.city.name;
-     let temp = defaultData.main.temp
+     temp = defaultData.main.temp
      let weather = defaultData.weather[0].main;
      let weatherDesc = defaultData.weather[0].description;
      let windSpeed = defaultData.wind.speed;
@@ -153,16 +156,13 @@ const nowWeather = async (api2) => {
      }
      }
      catch(error){
-
+          console.log(error)
           document.querySelector(".weather-container").style.height = '100vh'
           document.querySelector(".weather-container").innerHTML = `
                     <div>
-                    <h1>No City Matches Your Query </h1>
-                    </br>
-                    <button onclick="location.reload()</div>"
-                    style=" padding: 1rem; cursor: pointer "
-                    >Search Again
-                    </button>
+                         <h1>No City Matches Your Query </h1>
+                         <button onclick="location.reload()" style=" padding: 1rem; cursor: pointer"> Search Again </button>
+                    </div>
           `;
      }
      //console.log(r)
@@ -193,13 +193,13 @@ const nowWeather = async (api2) => {
      //console.log(new Date(i));
 }
 
-
+//nowWeather(api2);
 function displayFutureWeather(){
 
      
      for(let i = 9; i <= r.list.length -1; i += 8){
           let constData = r.list[i]
-          let temp = constData.main.temp
+          temp = constData.main.temp
           let weather = constData.weather[0].main;
           let weatherDesc = constData.weather[0].description;
           //let date = constData.dt_txt;
@@ -242,25 +242,23 @@ function displayCorrectImages(weather){
 
 //User Search Button Functionality
 
-searchBtn.addEventListener('click', 
-     () =>{
+// searchBtn.addEventListener('click', 
+//      () =>{
 
-          timer();
-          let userInputLocationValue = searchInput.value;
-          
+//           let userInputLocationValue = searchInput.value;
 
-          if(userInputLocationValue == "" || userInputLocationValue == " "){
-               return
-          }
-          let userInputLocation = `https://api.openweathermap.org/data/2.5/forecast?q=${userInputLocationValue}&appid=${apiKey}&units=metric`
-          document.querySelector('.future-weather').innerHTML = "";
-          nowWeather(userInputLocation)
+//           if(userInputLocationValue == "" || userInputLocationValue == " "){
+//                return
+//           }
+//           let userInputLocation = `https://api.openweathermap.org/data/2.5/forecast?q=${userInputLocationValue}&appid=${apiKey}&units=metric`
+//           document.querySelector('.future-weather').innerHTML = "";
+//           nowWeather(userInputLocation)
 
-          searchInput.value = "";
-     }
-)
+//           searchInput.value = "";
+//      }
+// )
 
-nowWeather(api2);
+
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
 // function displayFutureWeather(){
