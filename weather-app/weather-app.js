@@ -51,8 +51,8 @@ const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 let  a;
 let r;
 let api2;
-
-     api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
+let y = searchInput.value || "nairobi";
+     api2 = `https://api.openweathermap.org/data/2.5/forecast?q=${y}&appid=${apiKey}&units=metric`
 
 
 //°F = (°C × 9/5) + 32
@@ -150,7 +150,7 @@ function displayFutureWeather(){
      }
 }
 
-//nowWeather();
+nowWeather();
 
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
