@@ -49,12 +49,27 @@ measuresRadio.forEach (
                     inputId = this.id
 
                     if(inputId == 'fahrenheit'){
-                         document.querySelector(".weather-container").textContent = " "
-                         nowWeather(api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=imperials`)
+                         let overrindingElemets = document.querySelectorAll(".next-day");
+                         for(let i = 0; i <= 2; i++){
+                              overrindingElemets.forEach(
+                                   (element) => {
+                                        element.style.display = 'none'
+                                   }
+                              )
+                         }
+                         nowWeather(`https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=imperials`)
                     }
-                    // else if(inputId == 'celcius'){
-                         
-                    // }
+                    else if(inputId == 'celcius'){
+                         let overrindingElemets = document.querySelectorAll(".next-day");
+                         for(let i = 0; i <= 2; i++){
+                              overrindingElemets.forEach(
+                                   (element) => {
+                                        element.style.display = 'none'
+                                   }
+                              )
+                         }
+                         nowWeather(api2)
+                    }
                     
                }
           })
