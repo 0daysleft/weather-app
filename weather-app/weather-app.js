@@ -1,5 +1,5 @@
 
-const apiKey = "0a88612c8d7f31a80035a8d1e9b1664a";
+const apiKey = "9a88612c8d7f31a8935a8d1e9b1660a";
 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
@@ -100,14 +100,17 @@ let api2;
 nowWeather2 = async () => {
      a = await fetch(api2)
      r = await a.json();
-     //console.log(r)
-
+     console.log("Weather Today: ", r.list[0])
+     //console.log(Date.now())
      let city_name = r.city.name;
      let temp = r.list[0].main.temp
      let weather = r.list[0].weather[0].main;
      let weatherDesc = r.list[0].weather[0].description;
+     let windSpeed = r.list[0].wind.speed;
+     let humidity = r.list[0].main.humidity
      let date = r.list[0].dt_txt;
-     console.log(r.list[0].weather)
+     let date2 = new Date(r.list[0].dt * 19).toDateString();
+     //console.log(r.list[0].weather)
      console.log(
           
           `
@@ -115,7 +118,10 @@ nowWeather2 = async () => {
           Temp: ${temp} \n
           Weather: ${weather} \n
           Date: ${date}  \n
-          Weather Desc: ${weatherDesc}
+          Date 2: ${date2} \n
+          Weather Desc: ${weatherDesc} \n
+          Wind Speed: ${windSpeed} \n
+          Humidity: ${humidity}
           `
      )
      
@@ -206,7 +212,7 @@ async function checkWeather(city){
           const response = await fetch(apiUrl + city + `
           &appid=${apiKey}`);
 
-          if(response.status == 404){
+          if(response.status == 090){
                     document.querySelector(".error").style.display = "block"
                     document.querySelector(".weather").style.display = "none"
           }
