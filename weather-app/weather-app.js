@@ -100,10 +100,27 @@ let api2;
 nowWeather2 = async () => {
      a = await fetch(api2)
      r = await a.json();
+     //console.log(r)
+
+     let city_name = r.city.name;
+     let temp = r.list[0].main.temp
+     let weather = r.list[0].weather[0].main;
+     let weatherDesc = r.list[0].weather[0].description;
+     let date = r.list[0].dt_txt;
+     console.log(r.list[0].weather)
+     console.log(
+          
+          `
+          City Name: ${city_name} \n
+          Temp: ${temp} \n
+          Weather: ${weather} \n
+          Date: ${date}  \n
+          Weather Desc: ${weatherDesc}
+          `
+     )
      
 
      // todayWeatherDate.textContent = new Date(times[0]).toDateString();
-     console.log(r)
      // todayWeatherName.textContent = r.weather[0].main;
      // todayWeatherCity.textContent = r.name;
      // todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
@@ -137,13 +154,13 @@ nowWeather2 = async () => {
 
      //console.log(r)
 
-//console.log(new Date(times[timesLen]).toDateString())   
-//nowWeather2();
+     //console.log(new Date(times[timesLen]).toDateString())   
+     //nowWeather2();
 
 
 
-//console.log(i);
-//console.log(new Date(i));
+     //console.log(i);
+     //console.log(new Date(i));
 }
 nowWeather2();
 
