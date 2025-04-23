@@ -43,17 +43,12 @@ const currentWindSpeed = document.querySelector('.atmospheric-conditions .wind-s
 const humidityPercentage = document.querySelector('.humidity-percentage')
 const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 
-//https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={time}&appid={API key}
-//  
 let weatherPic;
 let  a;
 let r;
 let api2;
- let badMessage;
- let temp;
-// let badMessageCity;
+let badMessage;
 
-//let y = searchInput.value || "nairobi";
 api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
 
 
@@ -111,22 +106,7 @@ const nowWeather = async (api2) => {
      let humidity = defaultData.main.humidity
      let date = defaultData.dt_txt;
      let date2 = new Date(defaultData.dt * 1000).toDateString();
-     //console.log(length)
-     
-     // console.log(
-          
-     //      `
-     //      City Name: ${} \n
-     //      Temp: ${} \n
-     //      Weather: ${} \n
-     //      Date: ${date}  \n
-     //      Date 2: ${} \n
-     //      Weather Desc: ${weatherDesc} \n
-     //      Wind Speed: ${windSpeed} \n
-     //      Humidity: ${humidity}
-     //      `
-     // )
-     
+
      displayCorrectImages(weather);
 
      todayWeatherImage.src = weatherPic;
@@ -153,32 +133,7 @@ const nowWeather = async (api2) => {
                     </div>
           `;
      }
-     //console.log(r)
-     //displayFutureWeather()
-     
-         
-                  //console.log(r)  
-     
-
-      //console.log(times)
-     // let weatherDesc = r.weather[0].description;
-     // let windTemp = r.weather[0].main.temp
- 
-     // console.log(
-     //      `
-     //      \nThere will be ${weather} at ${times}, weather description ${windTemp}
-     //      `
-     // )
-
-     //console.log(r)
-
-     //console.log(new Date(times[timesLen]).toDateString())   
-     //nowWeather2();
-
-
-
-     //console.log(i);
-     //console.log(new Date(i));
+    
 }
 
 nowWeather(api2);
