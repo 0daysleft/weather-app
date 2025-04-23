@@ -82,8 +82,8 @@ let inputId;
 document.querySelectorAll('input[type="radio"]').forEach (
      (element) => {
           element.addEventListener('click', () => {
-               inputId = element.checked.id
-               changeMeasures(temp)
+               inputId = element.id
+               //changeMeasures(temp)
           })
      }
 )
@@ -105,7 +105,7 @@ const nowWeather = async (api2) => {
      r = await a.json();
      //const end = performance.now();
      //apiTime = (end - start)
-     console.log(r)
+     //console.log(r)
      //console.log("Weather Today: ", r)
      //console.log(Date.now())
      //console.log("Start: ",  start, "\nEnd: ", end, "Total : ", (end - start) )
@@ -242,21 +242,21 @@ function displayCorrectImages(weather){
 
 //User Search Button Functionality
 
-// searchBtn.addEventListener('click', 
-//      () =>{
+searchBtn.addEventListener('click', 
+     () =>{
 
-//           let userInputLocationValue = searchInput.value;
+          let userInputLocationValue = searchInput.value;
 
-//           if(userInputLocationValue == "" || userInputLocationValue == " "){
-//                return
-//           }
-//           let userInputLocation = `https://api.openweathermap.org/data/2.5/forecast?q=${userInputLocationValue}&appid=${apiKey}&units=metric`
-//           document.querySelector('.future-weather').innerHTML = "";
-//           nowWeather(userInputLocation)
+          if(userInputLocationValue == "" || userInputLocationValue == " "){
+               return
+          }
+          let userInputLocation = `https://api.openweathermap.org/data/2.5/forecast?q=${userInputLocationValue}&appid=${apiKey}&units=metric`
+          document.querySelector('.future-weather').innerHTML = "";
+          nowWeather(userInputLocation)
 
-//           searchInput.value = "";
-//      }
-// )
+          searchInput.value = "";
+     }
+)
 
 
 //console.log("Response Out: ",r)
