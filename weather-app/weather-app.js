@@ -88,39 +88,28 @@ async function nowWeather() {
 //console.log(typeof Date.now())
 
 
-let times = []
-let allWeatherInfo = [];
-let timesLen;
 let nowWeather2;
 let  a;
 let r;
 let api2;
 
-
-for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilliseconds){
-     
-    // api2 = `https://api.openweathermap.org/data/2.5/weather?q=nairobi&dt=${i}&appid=${apiKey}`
-
-
      api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
 
 
 
-     times.push(i);
-
-    nowWeather2 = async () => {
+nowWeather2 = async () => {
      a = await fetch(api2)
      r = await a.json();
-     allWeatherInfo.push(r)
-
-     todayWeatherDate.textContent = new Date(times[0]).toDateString();
      
-     todayWeatherName.textContent = r.weather[0].main;
-     todayWeatherCity.textContent = r.name;
-     todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
-     windSpeed.textContent = r.wind.speed;
-     humidityPercentage.textContent = r.wind.deg + '%';
-     humidityBarPercentage.style.width = r.wind.deg+'%'
+
+     // todayWeatherDate.textContent = new Date(times[0]).toDateString();
+     console.log(r)
+     // todayWeatherName.textContent = r.weather[0].main;
+     // todayWeatherCity.textContent = r.name;
+     // todayWeatherTemperature.innerHTML = (r.main.temp - 273.15).toFixed(2)+"°C";
+     // windSpeed.textContent = r.wind.speed;
+     // humidityPercentage.textContent = r.wind.deg + '%';
+     // humidityBarPercentage.style.width = r.wind.deg+'%'
      
      //console.log(r)
      //displayFutureWeather()
@@ -148,9 +137,6 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilli
 
      //console.log(r)
 
-}
-
-
 //console.log(new Date(times[timesLen]).toDateString())   
 //nowWeather2();
 
@@ -158,11 +144,9 @@ for(let i = Date.now(); i <= (Date.now() + (dayMilliseconds * 2)); i += dayMilli
 
 //console.log(i);
 //console.log(new Date(i));
-nowWeather2();
 }
+nowWeather2();
 
-console.log("All Info: ", allWeatherInfo)
-console.log("Time: ", times)
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
 // function displayFutureWeather(){
