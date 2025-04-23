@@ -47,7 +47,7 @@ const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 
 //https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={time}&appid={API key}
 //  
-
+let weatherPic;
 let  a;
 let r;
 let api2;
@@ -89,7 +89,9 @@ const nowWeather = async (api2) => {
      //      `
      // )
      
-
+     todayWeatherImage.src = displayCorrectImages(weather);
+     console.log(todayWeatherImage.src)
+     
      todayWeatherDate.textContent = date2;
      todayWeatherName.textContent = weather;
      todayWeatherCity.textContent = city_name;
@@ -137,13 +139,14 @@ function displayFutureWeather(){
           let weather = constData.weather[0].main;
           let weatherDesc = constData.weather[0].description;
           //let date = constData.dt_txt;
+          displayCorrectImages(weather)
           let date = new Date(constData.dt * 1000).toDateString();
      
       document.querySelector('.future-weather').innerHTML += 
                     `
                     <div class="next-day">
                          <h2 class="next-day-date">${date}</h2>
-                         <div class="next-day-weather-image"><img src="./images/clear.png" alt=""></div>
+                         <div class="next-day-weather-image"><img src="${weatherPic}" alt=""></div>
                          <h3  class="next-weather-temperature" > ${temp}</h3>
                          <h3  class="next-weather-temperature" > ${weather}</h3>
                          <h3  class="next-weather-temperature" > ${weatherDesc}</h3>
@@ -153,6 +156,26 @@ function displayFutureWeather(){
 }
 
 nowWeather(api2);
+
+function displayCorrectImages(weather){
+     if(weather == "Clouds"){
+                   weatherPic = "images/clouds.png";
+          }
+          else if(weather == "Clear"){
+                    weatherPic = "images/clear.png";
+          }
+          else if(weather == "Rain"){
+                    weatherPic = "images/rain.png";
+          }
+          else if(weather == "Drizzle"){
+                    weatherPic = "images/drizzle.png";
+          }
+          else if(weather == "Mist"){
+                    weatherPic = "images/mist.png";
+          }
+}
+
+//User Search Button Functionality
 
 searchBtn.addEventListener('click', 
      () =>{
@@ -221,22 +244,6 @@ async function checkWeather(city){
           document.querySelector(".temp").innerHTML = Math.round(data.main.temp )+ "°c";
           document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
           document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
-
-          if(data.weather[0].main == "Clouds"){
-                   weatherIcon.src = "images/clouds.png";
-          }
-          else if(data.weather[0].main == "Clear"){
-                    weatherIcon.src = "images/clear.png";
-          }
-          else if(data.weather[0].main == "Rain"){
-                    weatherIcon.src = "images/rain.png";
-          }
-          else if(data.weather[0].main == "Drizzle"){
-                    weatherIcon.src = "images/drizzle.png";
-          }
-          else if(data.weather[0].main == "Mist"){
-                    weatherIcon.src = "images/mist.png";
-          }
 
           document.querySelector(".weather").style.display = "block";
           document.querySelector(".error").style.display = "none";
