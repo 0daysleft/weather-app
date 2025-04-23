@@ -51,13 +51,15 @@ const humidityBarPercentage = document.querySelector('.humidity-bar-data');
 let  a;
 let r;
 let api2;
+
+
 let y = searchInput.value || "nairobi";
-     api2 = `https://api.openweathermap.org/data/2.5/forecast?q=${y}&appid=${apiKey}&units=metric`
+     api2 = `https://api.openweathermap.org/data/2.5/forecast?q=nairobi&appid=${apiKey}&units=metric`
 
 
 //°F = (°C × 9/5) + 32
 
-const nowWeather = async () => {
+const nowWeather = async (api2) => {
      a = await fetch(api2)
      r = await a.json();
      //console.log("Weather Today: ", r)
@@ -150,7 +152,18 @@ function displayFutureWeather(){
      }
 }
 
-nowWeather();
+nowWeather(api2);
+
+searchBtn.addEventListener('click', 
+     () =>{
+          y = searchInput.value;
+          userInputLocation = `https://api.openweathermap.org/data/2.5/forecast?q=${y}&appid=${apiKey}&units=metric`
+          nowWeather(userInputLocation)
+
+          searchInput.value = "";
+     }
+)
+
 
 //console.log("Response Out: ",r)
 //console.log(new Date(times[2]).toDateString())
